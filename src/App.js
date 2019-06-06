@@ -42,7 +42,7 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor : 'White',
+      backgroundColor : 'green',
       border : '2px solid blue',
       padding : '8px',
       cursor : 'pointer',
@@ -65,6 +65,16 @@ class App extends Component {
         })} 
       </div>
       )
+
+      style.backgroundColor = 'red';
+    }
+
+    const classes = [];
+    if (this.state.Persons.length <=2) {
+      classes.push('red')
+    }
+    if (this.state.Persons.length <= 1) {
+      classes.push("bold");
     }
 
     return (
@@ -74,19 +84,10 @@ class App extends Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <button 
-            onClick={this.ShowPersons}
-            style={style}>
+          <p className={classes.join(' ')}>This is working</p>
+          <button onClick={this.ShowPersons} style={style}>
             Show/hide cards
-          </button>         
+          </button>
           {persons}
         </header>
       </div>
